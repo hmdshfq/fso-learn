@@ -1,6 +1,13 @@
 import React from "react";
 
-const Display = ({counter}) => <div>{counter}</div>
+const Display = ({ counter }) => <div>{counter}</div>;
+const Button = ({text, onClick}) => {
+    return (
+        <button onClick={onClick}>
+            {text}
+        </button>
+    )
+}
 
 const App = () => {
     const [counter, setCounter] = React.useState(0);
@@ -20,9 +27,9 @@ const App = () => {
     return (
         <div>
             <Display counter={counter} />
-            <button onClick={decreaseByOne}>-</button>
-            <button onClick={setToZero}>0</button>
-            <button onClick={increaseByOne}>+</button>
+            <Button onClick={decreaseByOne} text='-' />
+            <Button onClick={setToZero} text='0' />
+            <Button onClick={increaseByOne} text='+' />
         </div>
     );
 };
