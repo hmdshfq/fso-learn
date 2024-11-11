@@ -4,15 +4,20 @@ const App = () => {
     const [left, setLeft] = React.useState(0);
     const [right, setRight] = React.useState(0);
     const [allClicks, setAllClicks] = React.useState([]);
+    const [total, setTotal] = React.useState(0);
 
     const handleLeftClick = () => {
+        const nextNumber = left + 1
         setAllClicks([...allClicks, "L"]);
-        setLeft(left + 1);
+        setLeft(nextNumber);
+        setTotal(nextNumber + right);
     };
 
     const handleRightClick = () => {
+        const nextNumber = right + 1
         setAllClicks([...allClicks, "R"]);
-        setRight(right + 1);
+        setRight(nextNumber);
+        setTotal(left + nextNumber);
     };
 
     return (
@@ -22,6 +27,7 @@ const App = () => {
             <button onClick={handleRightClick}>Right</button>
             {right}
             <p>{allClicks.join(" ")}</p>
+            <p>Total {total}</p>
         </div>
     );
 };
