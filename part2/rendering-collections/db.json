@@ -1,19 +1,74 @@
 {
-    "notes": [
-        {
-            "id": "1",
-            "content": "HTML is easy",
-            "important": true
-        },
-        {
-            "id": "2",
-            "content": "Browser can execute only JavaScript",
-            "important": false
-        },
-        {
-            "id": "3",
-            "content": "GET and POST are the most important methods of HTTP protocol",
-            "important": true
-        }
-    ]
+  "notes": [
+    {
+      "id": "1",
+      "content": "HTML is easy",
+      "important": true
+    },
+    {
+      "id": "2",
+      "content": "Browser can execute only JavaScript",
+      "important": false
+    },
+    {
+      "id": "3",
+      "content": "GET and POST are the most important methods of HTTP protocol",
+      "important": true
+    },
+    {
+      "id": "9fe4",
+      "content": "Hello world",
+      "important": false
+    },
+    {
+      "id": "d656",
+      "content": "Hello world",
+      "important": true
+    },
+    {
+      "id": "a169",
+      "content": "Hello world",
+      "important": true
+    },
+    {
+      "id": "0cef",
+      "content": "Hello world",
+      "important": true
+    },
+    {
+      "id": "0f46",
+      "content": "Hey Man!",
+      "important": false
+    },
+    {
+      "id": "603c",
+      "content": "Polish is the easiest language in world",
+      "important": false
+    },
+    {
+      "id": "bf93",
+      "content": "Learning React is fun",
+      "important": true
+    },
+    {
+      "id": "7429",
+      "content": "Full Stack open is the best open source course",
+      "important": true
+    },
+    {
+      "id": "dc65",
+      "content": "Lubię kawę",
+      "important": false
+    },
+    {
+      "id": "6976",
+      "content": "Lubię kawę z mlekiem",
+      "important": true
+    },
+    {
+      "id": "5029",
+      "content": "Lampa jest nad Olą",
+      "important": true
+    }
+  ]
 }
