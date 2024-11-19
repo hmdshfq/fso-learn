@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
 import Note from "./Note.jsx";
 import NotesForm from "./NotesForm.jsx";
+import noteService from "./services/notes.js";
 
 const App = () => {
     const [notes, setNotes] = useState([]);
@@ -13,31 +13,34 @@ const App = () => {
             content: note,
             important: Math.random() < 0.5,
         };
-        axios
-            .post("http://localhost:3001/notes", noteObject)
-            .then((response) => {
-                console.log(response.data);
-                setNotes([...notes, response.data]);
+        noteService
+            .create(noteObject)
+            .then((returnedNote) => {
+                setNotes([...notes, returnedNote]);
             });
         setNote("");
     };
 
     const toggleImportance = (id) => {
-        const url = `http://localhost:3001/notes/${id}`;
-        const note = notes.filter(note => note.id === id);
-        const nextNote = {...note, important: !note.important};
-        axios
-            .put(url, nextNote)
-            .then(response => {
-                setNotes(notes.map(note => note.id === id ? response.data : note))
-            })
+        const note = notes.filter((note) => note.id === id);
+        const changedNote = { ...note, important: !note.important };
+        noteService
+            .update(id, changedNote)
+            .then(returnedNotes => {
+                setNotes(
+                    notes.map((note) => (note.id === id ? returnedNotes : note))
+                );
+        });
     };
 
     useEffect(() => {
-        axios.get("http://localhost:3001/notes").then((response) => {
-            setNotes(response.data);
-        });
+        noteService
+            .getAll()
+            .then(initialNotes => {
+                setNotes(initialNotes);
+            });
     }, []);
+
     return (
         <div>
             <h1>Notes</h1>
@@ -50,7 +53,7 @@ const App = () => {
                     />
                 ))}
             </ul>
-            <NotesForm addNote={addNote} note={note} setNote={setNote}/>
+            <NotesForm addNote={addNote} note={note} setNote={setNote} />
         </div>
     );
 };
