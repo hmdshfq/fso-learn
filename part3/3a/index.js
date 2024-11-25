@@ -28,5 +28,11 @@ app.get('/api/notes', (req, res) => {
     res.json(notes);
 })
 
+app.get('/api/notes/:id', (req, res) => {
+    const id = req.params.id;
+    const note = notes.filter(note => note.id === id)
+    res.send(note);
+})
+
 app.listen(PORT);
 console.log(`Server is running at port ${PORT}`);
