@@ -48,8 +48,28 @@ app.delete('/api/notes/:id', (req, res)=>{
 })
 
 app.post('/api/notes', (req, res) => {
-    const note = req.body;
-    console.log(note);
+    const body = req.body;
+
+    const generateId = () => {
+        const maxId = notes.length > 0 ? Math.max(...notes.map(note => note.id)) : 0;
+        return String(maxId + 1);
+    };
+
+    if (!body.content) {
+        return res.send(400).json({
+            error: "content missing"
+        })
+    }
+
+    const note = {
+        content: body.content,
+        important: Boolean(body.important) || false,
+        id: generateId(),
+    }
+
+    notes = [...notes, note];
+    console.log({notes});
+    
     res.json(note);
 })
 
