@@ -1,8 +1,10 @@
 const express = require("express");
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 const app = express();
+const cors = require("cors");
 // Middleware to parse the body of the request
 app.use(express.json());
+app.use(cors());
 
 const requestLogger = (request, response, next) => {
     console.log("Method: ", request.method);
@@ -89,5 +91,6 @@ const unknownEndpoint = (request, response) => {
 
 app.use(unknownEndpoint);
 
-app.listen(PORT);
-console.log(`Server is running at http://localhost:${PORT}`);
+app.listen(PORT, () => {
+    console.log(`Server is running at PORT ${PORT}`);
+});
