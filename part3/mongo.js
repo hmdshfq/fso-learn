@@ -26,16 +26,16 @@ const noteSchema = new mongoose.Schema({
 const Note = mongoose.model("Note", noteSchema);
 
 // Create a new note
-const note = new Note({
-    content: "HTML is easy",
-    important: true,
-});
+// const note = new Note({
+//     content: "HTML is easy",
+//     important: true,
+// });
 
 // Save the newly created note
-note.save().then((result) => {
-    console.log("note saved!");
-    mongoose.connection.close();
-});
+// note.save().then((result) => {
+//     console.log("note saved!");
+//     mongoose.connection.close();
+// });
 
 // Find all notes
 Note.find({}).then((result) => {
